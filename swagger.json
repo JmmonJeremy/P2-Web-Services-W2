@@ -1,0 +1,370 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "goal-creation-api",
+    "description": "Goal Creation Process App Personal Project",
+    "version": "1.0.0"
+  },
+  "host": "p2-web-services-w2.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "Welcome to the Goal Creation API",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "welcome": {
+                  "type": "string",
+                  "example": "Welcome to the Place that Turns Your Goals into Victorious Creations"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/profiles/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "motto": {
+                  "example": "any"
+                },
+                "firstName": {
+                  "example": "any"
+                },
+                "middleName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "idol": {
+                  "example": "any"
+                },
+                "photo": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/profiles/{username}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Fields to update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "Updated username"
+                },
+                "firstName": {
+                  "type": "string",
+                  "example": "Updated firstName"
+                },
+                "middleName": {
+                  "type": "string",
+                  "example": "Updated middleName"
+                },
+                "lastName": {
+                  "type": "string",
+                  "example": "Updated lastName"
+                },
+                "idol": {
+                  "type": "string",
+                  "example": "Updated idol"
+                },
+                "photo": {
+                  "type": "string",
+                  "example": "Updated photo"
+                }
+              },
+              "required": "idol"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/creations/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "goal": {
+                  "example": "any"
+                },
+                "motivator": {
+                  "example": "any"
+                },
+                "desire": {
+                  "example": "any"
+                },
+                "belief": {
+                  "example": "any"
+                },
+                "knowledge": {
+                  "example": "any"
+                },
+                "plan": {
+                  "example": "any"
+                },
+                "action": {
+                  "example": "any"
+                },
+                "victory": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/creations/{creationNumber}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "creationNumber",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "creationNumber",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Unique identifier for the Creation"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Fields to update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "goal": {
+                  "type": "string",
+                  "example": "Updated goal"
+                },
+                "motivator": {
+                  "type": "string",
+                  "example": "Updated motivator"
+                },
+                "desire": {
+                  "type": "string",
+                  "example": "Updated desire"
+                },
+                "belief": {
+                  "type": "string",
+                  "example": "Updated belief"
+                },
+                "knowledge": {
+                  "type": "string",
+                  "example": "Updated knowledge"
+                },
+                "plan": {
+                  "type": "string",
+                  "example": "Updated plan"
+                },
+                "action": {
+                  "type": "string",
+                  "example": "Updated action"
+                },
+                "victory": {
+                  "type": "string",
+                  "example": "Updated victory"
+                }
+              },
+              "required": "goal"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "creationNumber",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
