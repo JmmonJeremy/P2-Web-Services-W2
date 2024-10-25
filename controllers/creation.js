@@ -2,6 +2,7 @@ const db = require('../models');
 const Creation = db.Creation;
 
 exports.create = (req, res) => { 
+  // #swagger.responses[201] = { description: 'Successfully Created Creation Object' }
   console.log('Request Body:', req.body); // Log the entire request body
   // Validate request
   if (!req.body.goal) {
@@ -41,6 +42,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
+  // #swagger.responses[200] = { description: 'Successfully Retrieved of all Creations' }
     Creation.find({})
       .sort({ creationNumber: 1 }) // Sort by creationNumber in ascending order
       .then((data) => { 
@@ -60,6 +62,7 @@ exports.findAll = (req, res) => {
 
 // Find a single Creation with an id
 exports.findOne = (req, res) => {
+  // #swagger.responses[200] = { description: 'Successfully Retrieved Creation' }
   const creationNumber = req.params.creationNumber; 
   Creation.find({ creationNumber: creationNumber })
     .then((data) => {
@@ -76,8 +79,12 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Update a Creation by the id in the request
+// Update a Creation by the id in the request (For some reason auto-gen misses the added responses in update function only)
 exports.update = (req, res) => {
+  // #swagger.responses[204] = { description: 'Successfully Updated Creation' }
+  // #swagger.responses[400] = { description: 'Bad Request' }
+  // #swagger.responses[404] = { description: 'Not Found' }
+  // #swagger.responses[500] = { description: 'Internal Server Error' }
   if (!req.body) {
     return res.status(400).send({
       message: 'Data to update can not be empty!',
@@ -134,7 +141,6 @@ exports.update = (req, res) => {
       }
     }
   */
-
   const creationNumber = req.params.creationNumber;  
 
   Creation.findOneAndUpdate({ creationNumber: creationNumber }, req.body, { new: true, useFindAndModify: false })
@@ -154,6 +160,7 @@ exports.update = (req, res) => {
 
 // Delete a Creation with the specified id in the request
 exports.delete = (req, res) => {
+  // #swagger.responses[200] = { description: 'Successful Deletion of Creation' }
   const creationNumber = req.params.creationNumber; 
 
   Creation.findOneAndDelete({ creationNumber: creationNumber }) 

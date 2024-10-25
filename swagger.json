@@ -16,7 +16,7 @@
         "description": "Welcome to the Goal Creation API",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully Loaded Welcome",
             "schema": {
               "type": "object",
               "properties": {
@@ -45,7 +45,7 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully Retrieved of all Profiles"
           },
           "404": {
             "description": "Not Found"
@@ -91,7 +91,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Successfully Created Profile Object"
           },
           "400": {
             "description": "Bad Request"
@@ -118,7 +118,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully Retrieved Profile"
           },
           "404": {
             "description": "Not Found"
@@ -178,11 +178,20 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "Successfully Updated Profile"
+          },
           "400": {
             "description": "Bad Request"
           },
+          "404": {
+            "description": "Not Found"
+          },
           "412": {
             "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -198,7 +207,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successful Deletion of Profile"
           },
           "404": {
             "description": "Not Found"
@@ -217,7 +226,7 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully Retrieved of all Creations"
           },
           "404": {
             "description": "Not Found"
@@ -272,7 +281,7 @@
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Successfully Created Creation Object"
           },
           "400": {
             "description": "Bad Request"
@@ -299,7 +308,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successfully Retrieved Creation"
           },
           "404": {
             "description": "Not Found"
@@ -368,11 +377,20 @@
           }
         ],
         "responses": {
+          "204": {
+            "description": "Successfully Updated Creation"
+          },
           "400": {
             "description": "Bad Request"
           },
+          "404": {
+            "description": "Not Found"
+          },
           "412": {
             "description": "Precondition Failed"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -388,7 +406,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Successful Deletion of Creation"
           },
           "404": {
             "description": "Not Found"

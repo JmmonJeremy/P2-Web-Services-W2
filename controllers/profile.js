@@ -2,6 +2,7 @@ const db = require('../models');
 const Profile = db.Profile;
 
 exports.create = (req, res) => { 
+  // #swagger.responses[201] = { description: 'Successfully Created Profile Object' }
   // Validate request
   if (!req.body.username) {
     res.status(400).send({ message: 'Content can not be empty!' });
@@ -37,6 +38,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
+  // #swagger.responses[200] = { description: 'Successfully Retrieved of all Profiles' }
     Profile.find(
       {},
       {
@@ -78,6 +80,7 @@ exports.findAll = (req, res) => {
 
 // Find a single Profile with an id
 exports.findOne = (req, res) => {
+  // #swagger.responses[200] = { description: 'Successfully Retrieved Profile' }
   const username = req.params.username; 
   Profile.find({ username: username })
     .then((data) => {
@@ -96,6 +99,10 @@ exports.findOne = (req, res) => {
 
 // Update a Profile by the username in the request
 exports.update = (req, res) => {
+  // #swagger.responses[204] = { description: 'Successfully Updated Profile' }
+  // #swagger.responses[400] = { description: 'Bad Request' }
+  // #swagger.responses[404] = { description: 'Not Found' }
+  // #swagger.responses[500] = { description: 'Internal Server Error' }
   if (!req.body) {
     return res.status(400).send({
       message: 'Data to update can not be empty!',
@@ -138,7 +145,6 @@ exports.update = (req, res) => {
       }
     }
   */
-
   const username = req.params.username;
 
   Profile.findOneAndUpdate({ username: username }, req.body, { new: true, runValidators: true, useFindAndModify: false })
@@ -158,6 +164,7 @@ exports.update = (req, res) => {
 
 // Delete a Profile with the specified username in the request
 exports.delete = (req, res) => {
+  // #swagger.responses[200] = { description: 'Successful Deletion of Profile' }
   const username = req.params.username;
 
   Profile.findOneAndDelete({ username: username })

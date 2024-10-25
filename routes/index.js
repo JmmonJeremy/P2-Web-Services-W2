@@ -7,7 +7,7 @@ const swagger = require('./swagger');
 routes.get('/', (req, res) => {
   /* #swagger.description = "Welcome to the Goal Creation API" */
   /* #swagger.responses[200] = { 
-        description: "Success", 
+        description: "Successfully Loaded Welcome", 
         '@schema': { 
              "type": "object",
             "properties": {
