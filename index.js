@@ -12,6 +12,10 @@ app
   .use(express.urlencoded({ extended: true }))
   .use('/', require('./routes'));
 
+process.on('uncaughtException', (err, origin) => {
+  console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+});
+
 const db = require('./models');
 db.mongoose
   .connect(db.url, {

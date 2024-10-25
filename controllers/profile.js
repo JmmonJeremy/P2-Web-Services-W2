@@ -22,7 +22,11 @@ exports.create = (req, res) => {
   profile
     .save(profile)
     .then((data) => {
-      res.status(201).send(data);
+      if(data) {
+        res.status(201).json(data);
+      } else {
+        res.status(400).json(data.error || 'The server did not process the request. Some error occurred while creating the Profile Object.');
+      }      
     })
     .catch((err) => {
       res.status(500).send({
@@ -37,7 +41,7 @@ exports.findAll = (req, res) => {
       {},
       {
         username: 1,
-        moto: 1,
+        motto: 1,
         firstName: 1,
         middleName: 1,
         lastName: 1,
@@ -58,8 +62,11 @@ exports.findAll = (req, res) => {
           idol: profile.idol,
           photo: profile.photo,
         }));
-        res.send(orderedData); // Send the newly ordered data
-        // res.send(data);
+        if (!data)
+        res
+          .status(404)
+          .send({ message: 'No Profiles found! There are either no Profiles yet, or their was an error retrieving them.'});         
+      else res.send(orderedData); // Send the newly ordered data    
       })
       .catch((err) => {
         res.status(500).send({

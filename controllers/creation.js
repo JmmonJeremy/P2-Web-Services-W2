@@ -26,7 +26,11 @@ exports.create = (req, res) => {
   creation
     .save(creation)
     .then((data) => {
-      res.status(201).send(data);
+      if(data) {
+        res.status(201).json(data);
+      } else {
+        res.status(400).json(data.error || 'The server did not process the request. Some error occurred while creating the Creation Object.');
+      }      
     })
     .catch((err) => {
       res.status(500).send({
@@ -38,9 +42,13 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
     Creation.find({})
-      .sort({ creationNumber: 1 }) // Sort by name in ascending order
-      .then((data) => {          
-        res.send(data); // Send the newly ordered data  
+      .sort({ creationNumber: 1 }) // Sort by creationNumber in ascending order
+      .then((data) => { 
+        if (!data)
+          res
+            .status(404)
+            .send({ message: 'No Creations found! There are either no Creations yet, or their was an error retrieving them.'});         
+        else res.send(data); // Send the newly ordered data  
       })
       .catch((err) => {
         res.status(500).send({
