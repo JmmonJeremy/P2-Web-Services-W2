@@ -147,7 +147,7 @@ exports.update = (req, res) => {
         res.status(404).send({
           message: `Cannot update Profile with username=${username}. Maybe Profile was not found!`,
         });
-      } else res.send({ message: 'Profile was updated successfully.' });
+      } else res.status(204).send({ message: 'Profile was updated successfully.' });
     })
     .catch((err) => {
       res.status(500).send({

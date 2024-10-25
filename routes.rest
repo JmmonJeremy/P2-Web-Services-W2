@@ -57,7 +57,7 @@ Content-Type: application/json
 DELETE http://localhost:8080/profiles/DemoWoman HTTP/1.1
 ###
 // REMOVING A CREATION WITH DELETE
-DELETE http://localhost:8080/creations/3 HTTP/1.1
+DELETE http://localhost:8080/creations/10 HTTP/1.1
 ###
 // CREATING CREATION WITH POST
 POST http://localhost:8080/creations HTTP/1.1 

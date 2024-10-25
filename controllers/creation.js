@@ -143,7 +143,7 @@ exports.update = (req, res) => {
         res.status(404).send({
           message: `Cannot update Creation with creationNumber=${creationNumber}. This creationNumber was not found!`,
         });
-      } else res.send({ message: 'Creation was updated successfully.' });
+      } else res.status(204).send({ message: 'Creation was updated successfully.' });
     })
     .catch((err) => {
       res.status(500).send({
