@@ -11,6 +11,7 @@ exports.create = (req, res) => {
 
   // Create a Creation
   const creation = new Creation({
+    creationNumber: req.body.creationNumber,
     motivator: req.body.motivator,
     desire: req.body.desire,
     belief: req.body.belief,
@@ -18,7 +19,8 @@ exports.create = (req, res) => {
     goal: req.body.goal,
     plan: req.body.plan,   
     action: req.body.action,
-    victory: req.body.victory   
+    victory: req.body.victory,
+    creationDate: req.body.creationDate   
   });
   // Save Creation in the database
   creation
@@ -131,7 +133,7 @@ exports.update = (req, res) => {
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update Creation with creationNumber=${creationNumber}. Maybe Creation was not found!`,
+          message: `Cannot update Creation with creationNumber=${creationNumber}. This creationNumber was not found!`,
         });
       } else res.send({ message: 'Creation was updated successfully.' });
     })
@@ -150,7 +152,7 @@ exports.delete = (req, res) => {
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete Creation with creationNumber=${creationNumber}. Maybe Creation was not found!`,
+          message: `Cannot delete Creation with creationNumber=${creationNumber}. This creationNumber was not found!!`,
         });
       } else {
         res.send({
@@ -160,7 +162,7 @@ exports.delete = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: 'Could not delete Creation with creationNumber=' + creationNumber,
+        message: 'Deletion error. Could not delete Creation with creationNumber=' + creationNumber,
       });
     });
 };

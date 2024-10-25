@@ -4,7 +4,7 @@
 // getting the API docs from Swagger
 GET http://localhost:8080/api-docs
 ###
-// getting documentation URL
+// getting homepage info
 GET http://localhost:8080/
 ###
 // getting list of all profiles (ordered by username alphabetically)
@@ -37,10 +37,11 @@ Content-Type: application/json
 }
 ###
 // ALTERING A CREATION WITH PUT
-PUT http://localhost:8080/creations/3 HTTP/1.1 
+PUT http://localhost:8080/creations/3f HTTP/1.1 
 Content-Type: application/json
 
 {
+  "creationNumber": 10,
   "motivator": "I can be a demoWoman for others.",
   "desire": "To Demonstrate things for others",
   "belief": "Everyone needs Demonstrations",
@@ -48,7 +49,8 @@ Content-Type: application/json
   "goal": "Demonstrate how to post a new Creation Object",
   "plan": "Enter a Post Demonstration",
   "action": "I saved a Post Demonstration",
-  "victory": "I created a Post Demonstration"
+  "victory": "I created a Post Demonstration",
+  "creationDate": "9/10/24"
 }
 ###
 // REMOVING A PROFILE WITH DELETE
@@ -62,6 +64,7 @@ POST http://localhost:8080/creations HTTP/1.1
 Content-Type: application/json
 
 {  
+  "creationNumber": 3,
   "motivator": "I can be a demoMan for others.",
   "desire": "To Demo things for others",
   "belief": "Everyone needs Demos",
@@ -69,15 +72,16 @@ Content-Type: application/json
   "goal": "Demo how to post a new Creation Object",
   "plan": "Enter a Post Demo",
   "action": "I saved a Post Demo",
-  "victory": "I created a Post Demo"
-}
+  "victory": "I created a Post Demo",
+  "creationDate": "9/6/24"
+  }
 ###
 // CREATING PROFILE WITH POST
 POST http://localhost:8080/profiles HTTP/1.1 
 Content-Type: application/json
 
 {  
-  "username": "DemoMan",
+  "username": "Demo-Man",
   "motto": "Do unto others as Christ would.",
   "firstName": "Demo",
   "middleName": "Bro",
