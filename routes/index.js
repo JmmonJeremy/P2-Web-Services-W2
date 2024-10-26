@@ -20,9 +20,16 @@ routes.get('/', (req, res) => {
           } 
         }    
   */ 
+ try {
   console.log("GET / route handler is being hit");
   const docData = 'Welcome to the Place that Turns Your Goals into Victorious Creations!';
   res.send(docData);
+ } catch (error) {
+  res.status(500).send({
+    message:
+      error.message || 'An error occurred while processing the request.',
+  });
+ }
 });
 
 routes.use('/', swagger);
